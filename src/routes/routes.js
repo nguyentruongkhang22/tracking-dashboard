@@ -6,12 +6,14 @@ import TableList from "@/pages/TableList.vue";
 import Maps from "@/pages/Maps.vue";
 import Map from "@/pages/Map.vue";
 import Notifications from "@/pages/Notifications.vue";
+import AuthService from "@/services/auth.service";
 
 const routes = [
   {
     path: "/",
     component: DashboardLayout,
     redirect: "/dashboard",
+    beforeEnter: AuthService.guard,
     children: [
       {
         path: "dashboard",
@@ -47,6 +49,16 @@ const routes = [
     path: "/map",
     name: "Map",
     component: Map,
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: () => import("@/pages/Login.vue"),
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: () => import("@/pages/Register.vue"),
   },
 ];
 

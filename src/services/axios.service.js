@@ -3,7 +3,7 @@ import axios from "axios";
 const baseURL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3003"
-    : "http://example.com";
+    : "https://api.lackadaisical.net";
 
 const ax = axios.create({
   baseURL,

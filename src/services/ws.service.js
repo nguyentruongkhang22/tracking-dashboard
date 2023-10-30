@@ -1,6 +1,10 @@
 export class WsService {
+  static url =
+    process.env.NODE_ENV === "development"
+      ? "ws://localhost:3003/ws"
+      : "wss://api.lackadaisical.net/ws";
   static init() {
-    const ws = new WebSocket("ws://localhost:3004");
+    const ws = new WebSocket(this.url);
     ws.onopen = function (event) {
       console.log(" -- Connection opened -- ");
       ws.send("Hello Server");

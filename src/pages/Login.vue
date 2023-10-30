@@ -37,7 +37,6 @@
 </template>
 
 <script>
-import ax from "../services/axios.service";
 import AuthService from "../services/auth.service";
 
 const auth = new AuthService();

@@ -25,6 +25,7 @@ export class AuthService {
 
   static async login() {
     this.loading = true;
+
     const response = await ax.post("/v1/auth/login", {
       username: this.login.username,
       password: this.login.password,

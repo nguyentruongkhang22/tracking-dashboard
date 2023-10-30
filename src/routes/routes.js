@@ -2,8 +2,7 @@ import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 
 import Dashboard from "@/pages/Dashboard.vue";
 import UserProfile from "@/pages/UserProfile.vue";
-import TableList from "@/pages/TableList.vue";
-import Maps from "@/pages/Maps.vue";
+import DeviceList from "@/pages/DeviceList.vue";
 import Map from "@/pages/Map.vue";
 import Notifications from "@/pages/Notifications.vue";
 import AuthService from "@/services/auth.service";
@@ -26,17 +25,9 @@ const routes = [
         component: UserProfile,
       },
       {
-        path: "table",
-        name: "Table List",
-        component: TableList,
-      },
-      {
-        path: "maps",
-        name: "Maps",
-        meta: {
-          hideFooter: true,
-        },
-        component: Maps,
+        path: "device-list",
+        name: "Device List",
+        component: DeviceList,
       },
       {
         path: "notifications",

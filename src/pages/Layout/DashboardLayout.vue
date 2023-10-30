@@ -16,17 +16,13 @@
         <md-icon>person</md-icon>
         <p>User Profile</p>
       </sidebar-link>
-      <sidebar-link to="/table">
+      <sidebar-link to="/device-list">
         <md-icon>content_paste</md-icon>
-        <p>Table list</p>
-      </sidebar-link>
-      <sidebar-link to="/maps">
-        <md-icon>location_on</md-icon>
-        <p>Maps</p>
+        <p>Device list</p>
       </sidebar-link>
       <sidebar-link to="/map">
         <md-icon>location_on</md-icon>
-        <p>Map</p>
+        <p>Tracking Map</p>
       </sidebar-link>
     </side-bar>
 
@@ -48,7 +44,6 @@
 
 <script>
 import TopNavbar from "./TopNavbar.vue";
-import ContentFooter from "./ContentFooter.vue";
 import DashboardContent from "./Content.vue";
 import MobileMenu from "@/pages/Layout/MobileMenu.vue";
 import FixedPlugin from "./Extra/FixedPlugin.vue";
@@ -57,7 +52,6 @@ export default {
   components: {
     TopNavbar,
     DashboardContent,
-    ContentFooter,
     MobileMenu,
     FixedPlugin,
   },

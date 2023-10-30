@@ -2,46 +2,47 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css"; // Re-uses images from ~leaflet package
 import "leaflet-defaulticon-compatibility";
 import L from "leaflet";
-let markerStack = [];
 
 export class MapService {
-  // ...
+  static layers = [];
+  static map = null;
   getMap() {
     return this.map;
   }
 
-  static initMap() {
+  static async initMap() {
     let defaultCoord = [21.0819, 105.6363]; // coord mặc định, Hà Nội
     let mapConfig = {
-      attributionControl: true, // để ko hiện watermark nữa, nếu bị liên hệ đòi thì nhớ open nha
-      center: defaultCoord, // vị trí map mặc định hiện tại
+      attributionControl: true,
+      center: defaultCoord,
       zoom: 20,
     };
-    let mapObj = L.map("map", mapConfig);
+    this.map = L.map("map", mapConfig);
 
     L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(mapObj);
+    }).addTo(this.map);
 
     let marker = L.marker(defaultCoord);
-    mapObj.addLayer(marker);
-    markerStack.push(marker);
+    this.layers.push(marker);
+    this.map.addLayer(marker);
 
-    navigator.geolocation.getCurrentPosition((position) => {
-      let lat = position.coords.latitude;
-      let lng = position.coords.longitude;
-      let coords = [lat, lng];
-      this.setMarker(coords, mapObj);
-    });
+    for (let i = 0; i < 10; i++) {
+      setInterval(() => {
+        defaultCoord[0] += 0.00001;
+        this.setMarker(defaultCoord);
+      }, 1000);
+    }
+
+    return map;
   }
 
-  static setMarker(coords, mapObj) {
+  static setMarker(coords) {
     let newMarker = L.marker(coords);
-    mapObj.addLayer(newMarker);
-    mapObj.removeLayer(markerStack.pop());
-    markerStack.push(newMarker);
-    mapObj.flyTo(coords);
+    this.map.addLayer(newMarker);
+    this.map.removeLayer(this.layers.pop());
+    this.layers.push(newMarker);
   }
 }
 

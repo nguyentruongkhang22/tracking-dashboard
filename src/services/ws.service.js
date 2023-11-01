@@ -1,5 +1,5 @@
 export class WsService {
-  static url = "ws://localhost:3003/ws";
+  static url = "ws://127.0.0.1:3003/ws";
 
   static init() {
     const ws = new WebSocket(this.url);

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseURL =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:3003"
+    ? "http://127.0.0.1:3003"
     : "https://api.lackadaisical.net";
 
 const ax = axios.create({
